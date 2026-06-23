@@ -10,46 +10,55 @@
  */
 class Solution {
 public:
-
-    int count(ListNode* head){
-        int c=0;
-        while(head){
-            c++;
-            head=head->next;
+    ListNode* middle(ListNode*& head){
+        ListNode* slow=head;
+        ListNode* fast=head;
+        ListNode* prev=NULL;
+        while(fast and fast->next){
+            prev=slow;
+            slow=slow->next;
+            fast=fast->next->next;
         }
-        return c;
+        prev->next=NULL;
+        return slow;
     }
 
-
-    void reorderList(ListNode* head) {
-
-        int k=count(head);
-        k=k/2;
-
-        ListNode* temp=head;
-        ListNode* x=head;
+    ListNode* reverse(ListNode* head){
         ListNode* prev=NULL;
         ListNode* next=head;
-        while(k){
-            next=temp->next;
-            while(temp->next){
-                prev=temp;
-                temp=temp->next;
-            }
-            x->next=temp;
-            if(prev!=x){
-                prev->next=NULL;
-                temp->next=next;
-            }
-
-           else{
-             return;
-           }
-            
-            temp=next;
-            x=next;
-            k--;
-
+        while(head){
+            next=head->next;
+            head->next=prev;
+            prev=head;
+            head=next;
         }
+        return prev;
+    }
+    void reorderList(ListNode* head) {
+
+        if(head==NULL or head->next==NULL){
+            return;
+        }
+        ListNode* left=head;
+        ListNode* r=middle(head);
+        ListNode* right=reverse(r);
+        
+        ListNode* dummy=new ListNode(0);
+        ListNode* y=dummy;
+
+        while(left and right){
+            dummy->next=left;
+            left=left->next;
+            dummy=dummy->next;
+            dummy->next=right;
+            right=right->next;
+            dummy=dummy->next;
+            
+            
+            
+        }
+
+        head=y->next;
+        
     }
 };
