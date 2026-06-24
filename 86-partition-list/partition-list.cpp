@@ -24,17 +24,15 @@ public:
         while(temp){
             if(temp->val>=x){
                 large->next=temp;
-                large=large->next; 
-                temp=temp->next;
-                large->next=NULL;    
+                large=large->next;    
             }
             else{
                 small->next=temp;
                 small=small->next;
-                temp=temp->next;
-                small->next=NULL;
             }
-            
+            temp=temp->next;
+            large->next=NULL;
+            small->next=NULL;
         }
         small->next=h2->next;
         return h1->next;
