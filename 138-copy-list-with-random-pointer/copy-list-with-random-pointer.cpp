@@ -90,10 +90,8 @@ public:
         Node* head1=h->next;
 
         while(head){
-            if(m[head->random]!=0){
+            
                 head1->random=m[head->random];
-                
-            }
                 head1=head1->next;
                 head=head->next;
         }
