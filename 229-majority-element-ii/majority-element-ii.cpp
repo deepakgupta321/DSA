@@ -35,11 +35,12 @@ public:
                 k1++;
             }
         }
+        int verify=(nums.size()/3);
         vector<int> ans;
-        if(nums.size()/3<k){
+        if(verify<k){
             ans.push_back(e1);
         }
-        if(nums.size()/3<k1){
+        if(verify<k1){
             ans.push_back(e2);
         }
 
