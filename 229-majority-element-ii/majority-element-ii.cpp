@@ -36,16 +36,25 @@ public:
             }
         }
         int verify=(nums.size()/3);
-        vector<int> ans;
+        bool y=false;
+        bool x=false;
         if(verify<k){
-            ans.push_back(e1);
+            x=true;
         }
         if(verify<k1){
-            ans.push_back(e2);
+            y=true;
         }
 
-       
-
-        return ans;
+        if(x==true and y==true){
+            return {e1, e2};
+        }
+        else if(x==true){
+            return {e1};
+        }
+        else if(y==true){
+            return {e2};
+        }
+        return {};
+            
     }
 };
