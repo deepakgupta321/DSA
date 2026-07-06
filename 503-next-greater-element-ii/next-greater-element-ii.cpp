@@ -46,8 +46,8 @@ public:
             while(!s.empty() and s.top()<=nums[i%n]){
                 s.pop();
             }
-            if(!s.empty()){
-                ans[i%n]= s.top();
+            if(i<n and !s.empty()){
+                ans[i]= s.top();
             }
             s.push(nums[i%n]);
         }
