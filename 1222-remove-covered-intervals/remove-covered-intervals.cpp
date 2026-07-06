@@ -15,12 +15,17 @@ public:
 
         for(int i=1; i<intervals.size(); i++){
             int x=a.size()-1;
-            if(a[x][0]<=intervals[i][0]  and  a[x][1]>=intervals[i][1]){
-                //nothing
+            //a[x][0]<=intervals[i][0] yeh wali condn redundant hai as sorting order mai hai 
+            // if(a[x][0]<=intervals[i][0]  and  a[x][1]>=intervals[i][1]){
+            //     continue;
+            // }
+
+            if(  a[x][1]>=intervals[i][1]){
+                continue;
             }
-            else{
+        
                 a.push_back(intervals[i]);
-            }
+        
         }
         return a.size();
     }
