@@ -16,30 +16,15 @@ public:
     }
     
     void pop() {
-        if(st.empty()){
-            cout<<"INVALID";
-        }
-        else{
-           st.pop();
-        }
+        st.pop();
     }
     
     int top() {
-        if(st.empty()){
-            return NULL;
-        }
-        else{
-            return st.top().first;
-        }
+        return st.top().first;
     }
     
     int getMin() {
-        if(st.empty()){
-            return NULL;
-        }
-        else{
-            return st.top().second;
-        }
+        return st.top().second;    
     }
 };
 
