@@ -1,33 +1,27 @@
 class StockSpanner {
-    vector<int> prices; // Saare prices store karne ke liye
-    stack<int> st;      // Indices store karne ke liye
-    
 public:
+
+    stack<pair<int, int>> st;
+
     StockSpanner() {
-        // Constructor khali rahega
+        
     }
     
     int next(int price) {
-        prices.push_back(price);
-        int currentIndex = prices.size() - 1;
-        
-        // Chote elements ke indices pop karo
-        while (!st.empty() && prices[st.top()] <= price) {
+        int span=1;
+
+        while(!st.empty() && st.top().first<=price){
+            span+=st.top().second;
             st.pop();
         }
-        
-        int span;
-        if (st.empty()) {
-            // Agar koi bada element nahi bacha, toh span shuruwat tak jayega
-            span = currentIndex + 1; 
-        } else {
-            // Agar pichla bada element mil gaya, toh unka difference span hoga
-            span = currentIndex - st.top(); 
-        }
-        
-        // Aaj ka index stack mein store kar lo aage ke liye
-        st.push(currentIndex);
-        
+        st.push({price, span});
+
         return span;
     }
 };
+
+/**
+ * Your StockSpanner object will be instantiated and called as such:
+ * StockSpanner* obj = new StockSpanner();
+ * int param_1 = obj->next(price);
+ */
