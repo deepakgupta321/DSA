@@ -9,18 +9,15 @@ public:
 
         int time=0;
         while(arr[k]!=0){
-            int x=q.front();
-            if(arr[x]==1){
-                time+=1;
-                arr[x]=arr[x]-1;
-                q.pop();
+            arr[q.front()]--;
+            
+            if(arr[q.front()]){
+                q.push(q.front());
+               
             }
-            else{
-                time++;
-                arr[x]=arr[x]-1;
-                q.push(x);
-                q.pop();
-            }
+            
+            time++;
+            q.pop();
         }
 
         return time;
