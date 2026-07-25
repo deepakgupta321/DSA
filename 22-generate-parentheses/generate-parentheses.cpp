@@ -38,18 +38,32 @@ public:
             gp(ans,temp,i, j+1,n);
             temp.pop_back();
         
-        
-        
-        
+    }
 
-        
+    void gpp(vector<string> &ans, string temp, int i, int j, int n){
+        if(i==n && j==n){
+            ans.push_back(temp);
+            return;
+        }
+
+        if(i<n){
+            temp.push_back('(');
+            gpp(ans, temp, i+1, j, n);
+            temp.pop_back();
+
+        }
+        if(i>j){
+            temp.push_back(')');
+            gpp(ans,temp, i, j+1, n);
+            temp.pop_back();
+        }
     }
     vector<string> generateParenthesis(int n) {
         vector<string> ans;
         int i=0;
         int j=0;
         string temp="";
-        gp(ans, temp, i, j,n);
+        gpp(ans, temp, i, j,n);
         return ans;
     }
 };
