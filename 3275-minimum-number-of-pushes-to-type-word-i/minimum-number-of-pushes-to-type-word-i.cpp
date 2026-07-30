@@ -16,8 +16,8 @@ public:
             return 8+16+x*3;
         }
         else if(word.size()>24){
-            int x=word.size()-26;
-            return 8+16+32+x*4;
+            int x=word.size()-24;
+            return 8+16+24+x*4;
         }
 
         return 1;
