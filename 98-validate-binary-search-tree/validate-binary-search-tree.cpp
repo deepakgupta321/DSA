@@ -21,10 +21,29 @@ public:
         solve(root->left, {x.first, root->val}, ans);
         solve(root->right, {root->val, x.second}, ans);
     }
+
+    void solve1(TreeNode* root, long long &prev, bool &ans1){
+        if(root==NULL) return;
+
+        solve1(root->left, prev, ans1);
+        if(root->val<=prev) ans1=false;
+        prev=root->val;
+        solve1(root->right, prev, ans1);
+    }
     bool isValidBST(TreeNode* root) {
-        bool ans=true;
-        if(root->left==NULL and root->right==NULL) return ans;
-        solve(root, {LLONG_MIN, LLONG_MAX}, ans);
-        return ans;
+
+
+
+
+        // bool ans=true;
+        // if(root->left==NULL and root->right==NULL) return ans;
+        // solve(root, {LLONG_MIN, LLONG_MAX}, ans);
+        // return ans;
+
+        bool ans1=true;
+        long long prev=LLONG_MIN;
+        solve1(root, prev, ans1);
+        return ans1;
+        
     }
 };
