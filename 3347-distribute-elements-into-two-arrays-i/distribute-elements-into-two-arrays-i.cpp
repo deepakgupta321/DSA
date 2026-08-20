@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> resultArray(vector<int>& nums) {
-        vector<int> result;
+       
         vector<int> a;
         vector<int> b;
         a.push_back(nums[0]);
@@ -15,11 +15,12 @@ public:
                 b.push_back(nums[i]);
             }
         }
-        result=a;
+        
+        
         for(int i=0; i<b.size(); i++){
-            result.push_back(b[i]);
+            a.push_back(b[i]);
         }
-        return result;
+        return a;
 
 
     }
