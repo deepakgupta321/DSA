@@ -33,7 +33,7 @@ public:
             return {-1,-1};
         }
 
-        sort(dis.begin(), dis.end());
+       
         int minn=INT_MAX;
         for(int i=0; i<dis.size()-1; i++){
             minn=min((dis[i+1]-dis[i]), minn);
